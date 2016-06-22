@@ -1,0 +1,2 @@
+module NamegensHelper
+end

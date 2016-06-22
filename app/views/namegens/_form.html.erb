@@ -1,0 +1,25 @@
+<%= form_for(@namegen, html: {class: 'form-horizontal'}) do |f| %>
+  <% if @namegen.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@name.errors.count, "erro") %>:</h2>
+      <ul>
+      <% @namegen.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field form-group">
+    <%= f.label :names %><br>
+    <%= f.text_area :names %>
+  </div>
+  <div class="actions">
+    <%= f.submit @namegen.new_record? ? "Cadastrar novo namegen" : "Atualizar namegen" %>
+  </div>
+<% end %>
+

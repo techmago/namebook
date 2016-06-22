@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  names: MyText
+  prefix: MyText
+  suffix: MyText
+  middle: MyText
+  syllab_mean: 1.5
+  syllab_stddev: 1.5
+
+two:
+  name: MyString
+  names: MyText
+  prefix: MyText
+  suffix: MyText
+  middle: MyText
+  syllab_mean: 1.5
+  syllab_stddev: 1.5

@@ -1,0 +1,40 @@
+<h1>Detalhes do capítulo de nome</h1>
+
+<p>
+  <strong>Capítulo de nomes:</strong>
+  <%= @namegen.name %>
+</p>
+
+<p>
+  <strong>Names:</strong>
+  <%= @namegen.names %>
+</p>
+
+<p>
+  <strong>Prefix:</strong>
+  <%= @namegen.prefix %>
+</p>
+
+<p>
+  <strong>Suffix:</strong>
+  <%= @namegen.suffix %>
+</p>
+
+<p>
+  <strong>Middle:</strong>
+  <%= @namegen.middle %>
+</p>
+
+<p>
+  <strong>Syllab mean:</strong>
+  <%= @namegen.syllab_mean %>
+</p>
+
+<p>
+  <strong>Syllab stddev:</strong>
+  <%= @namegen.syllab_stddev %>
+</p>
+
+<%= link_to 'Editar', edit_namegen_path(@namegen) %> |
+<%= link_to 'Voltar', namegens_path %> |
+<%= link_to 'Novo Namegen', new_namegen_path %>

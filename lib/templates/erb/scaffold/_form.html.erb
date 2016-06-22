@@ -1,0 +1,32 @@
+<%%= form_for(@<%= singular_table_name %>, html: {class: 'form-horizontal'}) do |f| %>
+  <%% if @<%= singular_table_name %>.errors.any? %>
+    <div id="error_explanation">
+	  <h2><%%= t('errors.messages.not_saved', count: @<%= singular_table_name %>.errors.count, resource: "<%= singular_table_name %>") %> </h2>
+      <ul>
+      <%% @<%= singular_table_name %>.errors.full_messages.each do |message| %>
+        <li><%%= message %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+
+<% attributes.each do |attribute| -%>
+  <div class="field form-group">
+<% if attribute.password_digest? -%>
+    <%%= f.label :password %><br>
+    <%%= f.password_field :password %>
+  </div>
+  <div class="field form-group">
+    <%%= f.label :password_confirmation %><br>
+    <%%= f.password_field :password_confirmation %>
+<% else -%>
+    <%%= f.label :<%= attribute.column_name %> %><br>
+    <%%= f.<%= attribute.field_type %> :<%= attribute.column_name %> %>
+<% end -%>
+  </div>
+<% end -%>
+  <div class="actions">
+    <%%= f.submit @<%= singular_table_name %>.new_record? ? "Cadastrar novo <%= singular_table_name %>" : "Atualizar <%= singular_table_name %>" %>
+  </div>
+<%% end %>
+

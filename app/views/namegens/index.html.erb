@@ -1,0 +1,45 @@
+<h1>Listando capítulos de nomes</h1>
+
+<div id="flip"> <h5>Buscar por namegens: </h5>
+<div id="panel">
+  <div id="search-form", :class="form-inline"> <fieldset>
+    <%= search_form_for @search, :html => {:class => "form-inline"} do |f| %>
+
+      <div class="actions">
+        <%= f.submit "Buscar", class: 'btn btn-default' %>
+        <%= f.submit "Limpar campos", :id => "reset_btn", class: 'btn btn-default' %>
+      </div>
+    <% end %>
+  </fieldset> </div>
+</div>
+
+<%= page_entries_info @namegen %>
+<table class="list" id="listsmall">
+  <thead>
+    <tr>
+      <th>Capítulo</th>
+      <th>Nomes</th>
+      <th>Média de silabas</th>
+      <th>Desvio padrão</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @namegens.each do |namegen| %>
+      <tr>
+        <td><%= namegen.name %></td>
+        <td><%= namegen.names %></td>
+        <td><%= namegen.syllab_mean %></td>
+        <td><%= namegen.syllab_stddev %></td>
+        <td><%= link_to 'Detalhes', namegen %></br>
+        <%= link_to 'Editar', edit_namegen_path(namegen) %></br>
+        <%= link_to 'Remover', namegen, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @namegen %>
+<br>
+
+<%= link_to 'Novo capítulo de nomes', new_namegen_path, class: 'btn btn-success' %>

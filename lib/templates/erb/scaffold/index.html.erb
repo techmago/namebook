@@ -1,0 +1,43 @@
+<h1>Listando <%= plural_table_name %></h1>
+
+<div id="flip"> <h5>Buscar por <%= plural_table_name %>: </h5>
+<div id="panel">
+  <div id="search-form", :class="form-inline"> <fieldset>
+    <%%= search_form_for @search, :html => {:class => "form-inline"} do |f| %>
+
+      <div class="actions">
+        <%%= f.submit "Buscar", class: 'btn btn-default' %>
+        <%%= f.submit "Limpar campos", :id => "reset_btn", class: 'btn btn-default' %>
+      </div>
+    <%% end %>
+  </fieldset> </div>
+</div>
+
+<%%= page_entries_info @<%= singular_table_name %> %>
+<table class="list" id="listsmall">
+  <thead>
+    <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+      <th><%= attribute.human_name %></th>
+<% end -%>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%% @<%= plural_table_name %>.each do |<%= singular_table_name %>| %>
+      <tr>
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+        <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
+<% end -%>
+        <td><%%= link_to 'Detalhes', <%= singular_table_name %> %></br>
+        <%%= link_to 'Editar', edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %></br>
+        <%%= link_to 'Remover', <%= singular_table_name %>, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <%% end %>
+  </tbody>
+</table>
+<%%= will_paginate @<%= singular_table_name %> %>
+<br>
+
+<%%= link_to 'Novo <%= human_name %>', new_<%= singular_table_name %>_path, class: 'btn btn-success' %>

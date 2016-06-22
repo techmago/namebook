@@ -1,4 +1,7 @@
 Namebook::Application.routes.draw do
+  resources :namegens
+  resources :namegens
+  resources :namegens
   get "home/index"
 
   resources :names

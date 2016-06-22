@@ -15,6 +15,9 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 
+# Pascoale
+gem 'pascoale', :git => 'git://github.com/techmago/pascoale.git', ref: '2babb2f1a6d6e92c7497921b5171d84bb586baea'
+
 # Rails
 gem 'actionpack-action_caching'
 gem 'actionpack-page_caching'
